@@ -21,19 +21,20 @@
     "dataSource": "db",
     "public": false
   },
-  "Car": {
-    "dataSource": "db"
+  "Task": {
+    "dataSource": "db",
+    "public": true
   },
-  "Customer": {
-    "dataSource": "db"
+  "Timesheet": {
+    "dataSource": "db",
+    "public": true
   },
-  "Inventory": {
-    "dataSource": "db"
+  "Employee": {
+    "dataSource": "db",
+    "public": true
   },
-  "Location": {
-    "dataSource": "db"
-  },
-  "Note": {
-    "dataSource": "db"
+  "Client": {
+    "dataSource": "db",
+    "public": true
   }
 }

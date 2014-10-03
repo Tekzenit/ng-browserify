@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "email": "contact@gradtrek.com",
+    "name": "GradTrek",
+    "password": "pass"
+  },
+  {
+    "id": 2,
+    "email": "contact@tekzenit.com",
+    "name": "Tekzenit",
+    "password": "pass"
+  }
+]

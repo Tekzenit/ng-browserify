@@ -5,21 +5,16 @@
 var async = require('async');
 
 // sample data
-var cars = require('./cars.json');
-var customers = require('./customers.json');
-var inventory = require('./inventory.json');
-var locations = require('./locations.json');
+var clients = require('./clients.json');
+var tasks = require('./tasks.json');
+var timesheets = require('./timesheets.json');
 
 module.exports = function(app, cb) {
-  var Inventory = app.models.Inventory;
-  var Location = app.models.Location;
-  var Customer = app.models.Customer;
-  var Car = app.models.Car;
+  var Client = app.models.Client;
+  var Employee = app.models.Employee;
+  var Timesheet = app.models.Timesheet;
+  var Task = app.models.Task;
   var db = app.dataSources.db;
-
-  var ids = {
-  };
-
   function importData(Model, data, cb) {
     // console.log('Importing data for ' + Model.modelName);
     Model.destroyAll(function(err) {
@@ -28,12 +23,6 @@ module.exports = function(app, cb) {
         return;
       }
       async.each(data, function(d, callback) {
-        if (ids[Model.modelName] === undefined) {
-          // The Oracle data has Location with ids over 80
-          // and the index.html depends on location 88 being present
-          ids[Model.modelName] = 80;
-        }
-        d.id = ids[Model.modelName]++;
         Model.create(d, callback);
       }, cb);
     });
@@ -44,10 +33,9 @@ module.exports = function(app, cb) {
       db.autoupdate(cb);
     },
 
-    importData.bind(null, Location, locations),
-    importData.bind(null, Car, cars),
-    importData.bind(null, Inventory, inventory),
-    importData.bind(null, Customer, customers)
+    importData.bind(null, Client, clients),
+    importData.bind(null, Task, tasks),
+    importData.bind(null, Timesheet, timesheets),
   ], function(err/*, results*/) {
     cb(err);
   });

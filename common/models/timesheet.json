@@ -1,0 +1,34 @@
+{
+  "name": "Timesheet",
+  "base": "PersistedModel",
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "hours": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "task": {
+      "type": "belongsTo",
+      "model": "Task",
+      "foreignKey": ""
+    },
+    "employee": {
+      "type": "belongsTo",
+      "model": "Employee",
+      "foreignKey": ""
+    },
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
