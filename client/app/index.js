@@ -16,7 +16,6 @@ angular.module('bs-app', [
 
 .run(function($state) {
     // go to the main state
-    console.log('hello world');
     $state.go('main');
 })
 ;

@@ -10,8 +10,9 @@ var build_options = {
 	'isDev': true
 }
 
+// external libraries, the browserify task will put these in vendor.js and omit them in app.js.
 var external_libraries = [
-	'jquery', 'angular'
+	'jquery', 'angular', 'angular-route', 'angular-ui-router'
 ]
 
 gulp.task('build:vendor', function() {
