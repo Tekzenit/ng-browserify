@@ -14,11 +14,14 @@
     "gulp-livereload": "^2.1.1",
     "gulp-preprocess": "^1.1.1",
     "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.0.0",
     "gulp-webserver": "^0.8.1",
     "process": "^0.8.0"
   },
   "dependencies": {
     "angular": "^1.2.23",
+    "angular-route": "^1.2.17-build.163.1",
+    "angular-ui-router": "^0.2.11",
     "jquery": "^2.1.1"
   }
 }

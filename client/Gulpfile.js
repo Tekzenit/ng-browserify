@@ -4,6 +4,7 @@ var rename = require('gulp-rename');
 var preprocess = require('gulp-preprocess');
 var livereload = require('gulp-livereload');
 var webserver = require('gulp-webserver');
+var sass = require('gulp-sass');	
 
 var build_options = {
 	'isDev': true
@@ -28,7 +29,7 @@ gulp.task('build:vendor', function() {
 });
 
 gulp.task('build:app', function() {
-	gulp.src('./app/main.js', {read: false})
+	gulp.src('./app/index.js', {read: false})
 		.pipe(browserify({
 			transform: [],
 			debug: process.env.NODE_ENV != 'production'
@@ -44,12 +45,13 @@ gulp.task('build:app', function() {
 });
 
 gulp.task('move:css', function() {
-	gulp.src('./app/app.css')
-		.pipe(gulp.dest('./build'));
+    gulp.src('./app/app.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./build'));
 })
 
 gulp.task('move:html', function() {
-	gulp.src('./app/index.html')
+	gulp.src(/*'./app/index.html', */'./app/**/*.html')
 		.pipe(preprocess({
 			context: {NODE_ENV: process.env.NODE_ENV}
 		}))
@@ -79,7 +81,7 @@ gulp.task('watch', function() {
 
 	watch('./app/index.html', 'move:html');
 	watch('./app/**/*.js', 'build:app');
-	watch('./app/app.css', 'move:css');
+	watch('./app/app.scss', 'move:css');
 })
 
 gulp.task('build', ['build:vendor', 'build:app']);
